@@ -66,11 +66,6 @@ resource dbSubnet 'Microsoft.Network/virtualNetworks/subnets@2020-11-01' existin
   name: 'db'
 }
 
-resource utilsSubnet 'Microsoft.Network/virtualNetworks/subnets@2021-02-01' existing = {
-  parent: vnet
-  name: 'utils'
-}
-
 var dbPrivateDnsZoneName = 'private.postgres.database.azure.com'
 resource dbPrivateDnsZone 'Microsoft.Network/privateDnsZones@2018-09-01' = {
   name: dbPrivateDnsZoneName
