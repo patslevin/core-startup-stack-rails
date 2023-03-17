@@ -46,7 +46,7 @@ The response will look something like the below JSON object. This response conta
 After creating the service principal, we need to give it an additional role so our infrastructure template can assign roles within the scope of the resource group.
 
 ```azurecli
-SP_ID=$(az ad sp list --display-name startupstack-gh --query [0].objectId -o tsv)
+SP_ID=$(az ad sp list --display-name startupstack-gh --query [0].id -o tsv)
 az role assignment create --assignee-object-id $SP_ID \
     --role "User Access Administrator" \
     --scope $RESOURCE_GROUP_ID \
