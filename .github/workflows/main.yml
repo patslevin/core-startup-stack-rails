@@ -20,7 +20,7 @@ jobs:
     outputs:
       name: ${{ steps.setName.outputs.name }}
       deployTag: ${{ steps.setTag.outputs.deployTag }}
-      crName: ${{ steps.setCRName.outputs.crName}}
+      crName: startupstackdemolftf2oefniise
       spId: ${{ steps.setSpId.outputs.spId}}
     steps:
     - name: 'Login via Azure CLI'
@@ -37,7 +37,7 @@ jobs:
       id: setCRName
       run: |
         CR_NAME=$(az acr list -g ${{ secrets.AZURE_RG }} --query [0].name -o tsv)
-        echo "::set-output name=crName::${CR_NAME}"
+        echo "::set-output name=crName::${CR_NAME//'-'/''}"
 
     - name: 'Set Deploy Tag Name'
       id: setTag
