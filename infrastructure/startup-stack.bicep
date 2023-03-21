@@ -279,10 +279,10 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   }
   sku: {
     capacity: 1
-    family: 'S'
-    name: 'S1'
-    size: 'S1'
-    tier: 'Standard'
+    family: 'B'
+    name: 'B1'
+    size: 'B1'
+    tier: 'Basic'
   }
 }
 
