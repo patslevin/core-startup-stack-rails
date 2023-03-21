@@ -9,7 +9,7 @@ ARG DEV_PACKAGES="postgresql-dev yaml-dev zlib-dev nodejs yarn libxml2-dev libxs
 ARG RUBY_PACKAGES="tzdata"
 
 
-ENV RAILS_ENV=production SECRET_KEY_BASE=fake NODE_ENV=production BUNDLE_APP_CONFIG="$RAILS_ROOT/.bundle" NODE_OPTIONS=--openssl-legacy-provider
+ENV RAILS_ENV=production SECRET_KEY_BASE=fake NODE_ENV=production BUNDLE_APP_CONFIG="$RAILS_ROOT/.bundle"
 
 WORKDIR $RAILS_ROOT
 
