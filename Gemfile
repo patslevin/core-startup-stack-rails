@@ -15,7 +15,7 @@ gem 'sass-rails',                 '6.0.0'
 gem 'webpacker',                  '5.4.0'
 gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
-gem 'bootsnap',                   '1.16.0', require: false
+gem 'bootsnap',                   '1.7.2', require: false
 gem 'lograge'
 
 group :development, :test do
