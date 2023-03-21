@@ -50,7 +50,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES \
     && gem install bundler -v2.4.7
-RUN echo "root:Docker!" | chpasswd 
+# RUN echo "root:Docker!" | chpasswd 
 COPY --from=build-env $RAILS_ROOT $RAILS_ROOT
 
 # Copy the sshd_config file to the /etc/ssh/ directory
