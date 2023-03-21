@@ -42,7 +42,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg',         '1.4.6'
+  gem 'pg',         '1.2.3'
   gem 'azure-storage-blob', '2.0.1'
 end
 

@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
 
-FROM ruby:3.2.1-alpine AS build-env
+FROM ruby:2.6.6-alpine AS build-env
 
 ARG RAILS_ROOT=/app
 ARG BUILD_PACKAGES="build-base curl-dev git"
@@ -18,7 +18,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $BUILD_PACKAGES $DEV_PACKAGES $RUBY_PACKAGES
 
-RUN gem install bundler -v 2.4.7
+RUN gem install bundler -v 2.2.19
 
 COPY Gemfile* package.json yarn.lock ./
 RUN bundle config build.nokogiri --use-system-libraries \
@@ -39,7 +39,7 @@ RUN bundle exec bin/rails webpacker:compile \
 
 ############### Build step done ###############
 
-FROM ruby:3.2.1-alpine as app
+FROM ruby:2.6.6-alpine as app
 
 ARG RAILS_ROOT=/app
 ARG PACKAGES="tzdata postgresql-client nodejs bash libxml2 libxslt openssh"
@@ -49,8 +49,8 @@ WORKDIR $RAILS_ROOT
 RUN apk update \
     && apk upgrade \
     && apk add --update --no-cache $PACKAGES \
-    && gem install bundler -v2.4.7
-# RUN echo "root:Docker!" | chpasswd 
+    && gem install bundler -v2.2.19
+RUN echo "root:Docker!" | chpasswd 
 COPY --from=build-env $RAILS_ROOT $RAILS_ROOT
 
 # Copy the sshd_config file to the /etc/ssh/ directory
