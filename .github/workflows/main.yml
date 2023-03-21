@@ -20,7 +20,7 @@ jobs:
     outputs:
       name: ${{ steps.setName.outputs.name }}
       deployTag: ${{ steps.setTag.outputs.deployTag }}
-      crName: ${{ steps.setTag.outputs.crName }}
+      crName: startupstackdemozlnz5mpiluugi
       spId: ${{ steps.setSpId.outputs.spId}}
     steps:
     - name: 'Login via Azure CLI'
@@ -33,11 +33,11 @@ jobs:
       run: |
         NAME=$(jq -r '.["parameters"]["name"]["value"]' infrastructure/params-production.json)
         echo "::set-output name=name::${NAME//'%'/'%25'}"
-    - name: 'Set Container Registry Name'
-      id: setCRName
-      run: |
-        CR_NAME=$(az acr list -g ${{ secrets.AZURE_RG }} --query [0].name -o tsv)
-        echo "::set-output name=crName::${CR_NAME//'-'/''}"
+#     - name: 'Set Container Registry Name'
+#       id: setCRName
+#       run: |
+#         CR_NAME=$(az acr list -g ${{ secrets.AZURE_RG }} --query [0].name -o tsv)
+#         echo "::set-output name=crName::${CR_NAME//'-'/''}"
 
     - name: 'Set Deploy Tag Name'
       id: setTag
